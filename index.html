@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>To do app kompleks</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="kotak">
+        <h2>To Do List</h2>
+        <input type="text" placeholder="Tulis Item disini..." id="userInput">
+        <ul id="urutan"></ul>
+      </div>
+    </div>
+    <script>
+      let userInput = document.querySelector('#userInput');
+      let urutan = document.querySelector('#urutan');
+
+      userInput.addEventListener("keyup",function(event){
+        if(event.key == "Enter"){
+          tambahItem(this.value)
+          this.value = ""
+        }
+      })
+      
+      let tambahItem = (userInput) =>{
+        let daftar = document.createElement("li");
+        daftar.innerHTML = `${userInput}<i></i>`;
+          daftar.addEventListener("click", function(){
+            this.classList.toggle('sudah');
+          })
+          
+          daftar.querySelector("i").addEventListener("click", function(){
+            daftar.remove();
+          })
+
+          urutan.appendChild(daftar);
+      }
+    </script>
+  </body>
+</html>
